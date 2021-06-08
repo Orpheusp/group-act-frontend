@@ -1,0 +1,38 @@
+{
+  "env": {
+    "browser": true,
+    "es2020": true
+  },
+  "extends": [
+    "react-app",
+    "react-app/jest",
+    "eslint:recommended",
+    "google",
+    "prettier"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": ["react"],
+  "rules": {
+    "valid-jsdoc": "off",
+    "require-jsdoc": "off"
+  },
+  "overrides": [
+    {
+      "files": ["src/**/*.stories.jsx"],
+      "rules": {
+        "import/no-anonymous-default-export": [
+          "error",
+          {
+            "allowObject": true
+          }
+        ]
+      }
+    }
+  ]
+}
