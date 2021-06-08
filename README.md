@@ -1,6 +1,27 @@
-# Getting Started with Create React App
+# Group Act
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Project Group Act was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), which uses **npm** to manage dependencies, **Prettier** to format code, **ESLint** to ensure coding standards, and **webpack** to bundle files for deployment
+
+The app is built using React + javascript + CSS modules, with UI tests written with storybook, and unit tests written with Jest.
+
+## Installation
+
+0. In order to run the following commands, you must have installed:
+
+- [npm](https://www.npmjs.com/package/npm)
+- [VS Code](https://code.visualstudio.com/Download)
+- [git](https://docs.github.com/en/github/getting-started-with-github/quickstart/set-up-git)
+- [Prettier VS Code Plugin](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+
+1. Fork [this repository](https://github.com/Orpheusp/group-act-frontend) to clone this repository.
+
+2. Clone the forked repository to your local machine.
+
+3. Run `npm install` to install required npm dependencies.
+
+## Deployment
+
+TBD
 
 ## Available Scripts
 
@@ -29,42 +50,6 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+### `npm run storybook`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Launches the storybook runner in watch mode.
