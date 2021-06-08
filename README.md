@@ -6,18 +6,32 @@ The app is built using React + javascript + CSS modules, with UI tests written w
 
 ## Installation
 
-0. In order to run the following commands, you must have installed:
+1. In order to run the following commands, you must have installed:
 
-- [npm](https://www.npmjs.com/package/npm)
-- [VS Code](https://code.visualstudio.com/Download)
-- [git](https://docs.github.com/en/github/getting-started-with-github/quickstart/set-up-git)
-- [Prettier VS Code Plugin](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+   - [npm](https://www.npmjs.com/package/npm)
+   - [VS Code](https://code.visualstudio.com/Download)
+   - [git](https://docs.github.com/en/github/getting-started-with-github/quickstart/set-up-git)
+   - [Prettier VS Code Plugin](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 
-1. Fork [this repository](https://github.com/Orpheusp/group-act-frontend) to clone this repository.
+2. Fork [this repository](https://github.com/Orpheusp/group-act-frontend).
 
-2. Clone the forked repository to your local machine.
+3. Clone the forked repository to your local machine.
 
-3. Run `npm install` to install required npm dependencies.
+4. Set upstream repository with `git remote add upstream https://github.com/Orpheusp/group-act-frontend`.
+
+5. Run `npm install` to install required npm dependencies.
+
+## Development
+
+We will follow the [Forking Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/forking-workflow) for the development of this project. In this workflow, there will be two different remote repos:
+
+1. The "official" repo: this is the repo being forked (ttps://github.com/Orpheusp/group-act-frontend).
+
+2. The "developer" repo: this is the developer's personal server-side repository, which is the one being cloned to your local machine.
+
+Step 4 of the Installation section sets the "official" repo as the upstream of your "developer" repo, so that you can use command ``
+
+Development happens in the developer's forked repository before it is ready for review and merge.
 
 ## Deployment
 
