@@ -6,18 +6,37 @@ The app is built using React + javascript + CSS modules, with UI tests written w
 
 ## Installation
 
-0. In order to run the following commands, you must have installed:
+1. In order to run the following commands, you must have installed:
 
-- [npm](https://www.npmjs.com/package/npm)
-- [VS Code](https://code.visualstudio.com/Download)
-- [git](https://docs.github.com/en/github/getting-started-with-github/quickstart/set-up-git)
-- [Prettier VS Code Plugin](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+   - [npm](https://www.npmjs.com/package/npm)
+   - [VS Code](https://code.visualstudio.com/Download)
+   - [git](https://docs.github.com/en/github/getting-started-with-github/quickstart/set-up-git)
+   - [Prettier VS Code Plugin](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 
-1. Fork [this repository](https://github.com/Orpheusp/group-act-frontend) to clone this repository.
+2. Fork [this repository](https://github.com/Orpheusp/group-act-frontend).
 
-2. Clone the forked repository to your local machine.
+3. Clone the forked repository to your local machine.
 
-3. Run `npm install` to install required npm dependencies.
+4. Set upstream repository with `git remote add upstream https://github.com/Orpheusp/group-act-frontend`.
+
+5. Fetch the branches and their respective commits from the upstream repository using `git fetch upstream`.
+
+6. Run `npm install` to install required npm dependencies.
+
+## Development
+
+We will follow the [Forking Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/forking-workflow) for the development of this project. In this workflow, there will be two different remote repos:
+
+1. The "official" repo: this is the repo being forked (ttps://github.com/Orpheusp/group-act-frontend). In this repo, there are two branches:
+
+   1. `main`: This is the branch for releases ready for deployment. Ideally, any commit to this branch will trigger a CI/CD pipeline action to bundle and deploy the app to target location.
+   2. `develop`: This is where all commits should reside by default. When a feature or a set of features is complete on this branch, the team will create a pull request to merge with the `main` branch to trigger auto-deployment.
+
+2. The "developer" repo: this is the developer's personal server-side repository, which is the one being cloned to your local machine. Branches in this repo largely mirror those of the "official" repo.
+
+Most local development should happen under the `develop` branch of the developer's forked repository, before it is ready for review and merge. During development, it is advised to sync with the upstream "official" repository often. Once on the `develop` branch (use `git checkout develop` to switch to this branch), use commands `git fetch upstream` & `git merge upstream/develop` to merge changes from the upstream `develop` branch into your local `develop` branch. This brings your fork's default branch into sync with the upstream repository, without losing your local changes.
+
+When it is time to submit for review, follow [this tutorial](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork) to create a pull request. **In most cases, you would want to set base branch to the `develop` branch of the "official" repo, and the compare branch to the `develop` branch of your forked repo.**
 
 ## Deployment
 
