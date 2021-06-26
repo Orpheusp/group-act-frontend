@@ -7,24 +7,24 @@ export function AppRoute({ children, ...rest }) {
   const auth = useAuth();
 
   const render = ({ location }) => {
-    switch (location) {
+    switch (location.pathname) {
       // When destination is the user or the group front page.
       case '/user':
       case '/group':
         if (auth.user) {
           return children;
         } else {
-          return redirectTo(location, '/');
+          return redirectTo(location.pathname, '/');
         }
       // When destination is the welcome page.
       case '/':
         if (auth.user) {
-          return redirectTo(location, '/user');
+          return redirectTo(location.pathname, '/user');
         } else {
           return children;
         }
       default:
-        return redirectTo(location, '/');
+        return redirectTo(location.pathname, '/');
     }
   };
 
