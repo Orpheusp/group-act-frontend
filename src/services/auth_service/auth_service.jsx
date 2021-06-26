@@ -1,5 +1,12 @@
 import React, { useContext, createContext, useState } from 'react';
 
+import {
+  sendGetOtpRequest,
+  sendSignInRequest,
+  sendSignUpRequest,
+  sendSignOutRequest,
+} from './auth_request_actions';
+
 // TODO: Productionize Auth.
 
 const authContext = createContext();
@@ -16,6 +23,9 @@ export function useAuth() {
 export function MockAuthProvider({ children, mockUser = null }) {
   const mockAuth = {
     user: mockUser,
+    getOtp: () => {
+      console.log('getOtp called.');
+    },
     signIn: () => {
       console.log('signIn called.');
     },
@@ -37,52 +47,36 @@ function useAuthProvider() {
   // access and log the user in automatically.
   const [user, setUser] = useState(window['PROFILE'] || null);
 
-  const signIn = (phoneNumber, otp, callback) => {
+  const getOtp = async (phoneNumber) => {
     if (user) {
       console.log('Already signed in.');
     } else {
-      sendSignInRequest(phoneNumber, otp).then((user) => {
-        setUser(user);
-        if (callback) {
-          // TODO: Remove artificial timeout.
-          setTimeout(() => {
-            callback(user);
-          }, 100);
-        }
-      });
+      await sendGetOtpRequest(phoneNumber);
     }
   };
 
-  const signUp = (phoneNumber, otp, callback) => {
+  const signIn = async (phoneNumber, otp) => {
     if (user) {
       console.log('Already signed in.');
     } else {
-      sendSignUpRequest(phoneNumber, otp).then((user) => {
-        setUser(user);
-        if (callback) {
-          // TODO: Remove artificial timeout.
-          setTimeout(() => {
-            callback(user);
-          }, 100);
-        }
-      });
+      const user = await sendSignInRequest(phoneNumber, otp);
+      setUser(user);
     }
   };
 
-  const signOut = (callback) => {
+  const signUp = async (phoneNumber, otp) => {
     if (user) {
-      sendSignOutRequest().then(() => {
-        setUser(null);
+      console.log('Already signed in.');
+    } else {
+      const user = await sendSignUpRequest(phoneNumber, otp);
+      setUser(user);
+    }
+  };
 
-        // Now that the user is logged out, remove the user profile object from
-        // `window`, which is now also obsolete.
-        delete window['PROFILE'];
-
-        if (callback) {
-          // TODO: Remove artificial timeout.
-          setTimeout(callback(user), 100);
-        }
-      });
+  const signOut = async (callback) => {
+    if (user) {
+      await sendSignOutRequest();
+      setUser(null);
     } else {
       console.log('Already signed out.');
     }
@@ -90,23 +84,9 @@ function useAuthProvider() {
 
   return {
     user,
+    getOtp,
     signIn,
     signUp,
     signOut,
   };
-}
-
-// TODO: Implement request.
-function sendSignInRequest(phoneNumber, otp) {
-  return Promise.resolve('user');
-}
-
-// TODO: Implement request.
-function sendSignUpRequest(phoneNumber, otp) {
-  return Promise.resolve('user');
-}
-
-// TODO: Implement request.
-function sendSignOutRequest() {
-  return Promise.resolve();
 }
