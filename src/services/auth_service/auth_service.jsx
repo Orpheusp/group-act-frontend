@@ -19,23 +19,25 @@ export function useAuth() {
 }
 
 export function MockAuthProvider({ children, mockUser = null }) {
-  const mockAuth = {
+  const mockAuthContext = {
     user: mockUser,
-    getOtp: () => {
-      console.log('getOtp called.');
+    getOtp: (phoneNumber) => {
+      console.log(`getOtp(${phoneNumber}) called.`);
     },
-    signIn: () => {
-      console.log('signIn called.');
+    signIn: (phoneNumber, otp) => {
+      console.log(`signIn(${phoneNumber}, ${otp}) called.`);
     },
-    signUp: () => {
-      console.log('signUp called.');
+    signUp: (phoneNumber, otp) => {
+      console.log(`signUp(${phoneNumber}, ${otp}) called.`);
     },
     signOut: () => {
-      console.log('signOut called.');
+      console.log('signOut() called.');
     },
   };
   return (
-    <authContext.Provider value={mockAuth}>{children}</authContext.Provider>
+    <authContext.Provider value={mockAuthContext}>
+      {children}
+    </authContext.Provider>
   );
 }
 
@@ -72,7 +74,7 @@ function useAuthProvider() {
     }
   };
 
-  const signOut = async (callback) => {
+  const signOut = async () => {
     if (user) {
       await sendSignOutRequest();
       setUser(null);
