@@ -7,8 +7,6 @@ import {
   sendSignOutRequest,
 } from './auth_request_actions';
 
-// TODO: Productionize Auth.
-
 const authContext = createContext();
 
 export function AuthProvider({ children }) {
@@ -51,7 +49,8 @@ function useAuthProvider() {
     if (user) {
       console.log('Already signed in.');
     } else {
-      await sendGetOtpRequest(phoneNumber);
+      const accountExists = await sendGetOtpRequest(phoneNumber);
+      return accountExists;
     }
   };
 
