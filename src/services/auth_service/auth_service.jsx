@@ -60,8 +60,8 @@ function useAuthProvider() {
     if (user) {
       console.log('Already signed in.');
     } else {
-      const user = await sendSignInRequest(phoneNumber, otp);
-      setUser(user);
+      const newUser = await sendSignInRequest(phoneNumber, otp);
+      setUser(newUser);
     }
   };
 
@@ -69,8 +69,8 @@ function useAuthProvider() {
     if (user) {
       console.log('Already signed in.');
     } else {
-      const user = await sendSignUpRequest(phoneNumber, otp);
-      setUser(user);
+      const newUser = await sendSignUpRequest(phoneNumber, otp);
+      setUser(newUser);
     }
   };
 
