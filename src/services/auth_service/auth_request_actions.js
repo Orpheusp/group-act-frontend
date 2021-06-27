@@ -1,3 +1,5 @@
+import { getCsrfHeader } from '../../utils/get_csrf_header';
+
 const SESSIONS_ENDPOINT_URL = '/api/sessions';
 
 const USERS_ENDPOINT_URL = '/api/users';
@@ -54,6 +56,7 @@ export async function sendSignUpRequest(phoneNumber, otp) {
 }
 
 export async function sendSignOutRequest() {
+  // CSRF header is needed since this is a privileged DELETE operation.
   const headers = getCsrfHeader();
   headers.append('Content-Type', 'application/json');
 
@@ -65,18 +68,4 @@ export async function sendSignOutRequest() {
   };
 
   await fetch(url, requestOptions);
-}
-
-export function getCsrfHeader() {
-  const headers = new Headers();
-  const csrfAccessToken = getCookie('csrf_access_token');
-  headers.append(`X-CSRF-TOKEN=${csrfAccessToken}`);
-
-  return headers;
-}
-
-function getCookie(name) {
-  const value = `; ${document.cookie}`;
-  const parts = value.split(`; ${name}=`);
-  if (parts.length === 2) return parts.pop().split(';').shift();
 }
