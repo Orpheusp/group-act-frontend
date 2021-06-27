@@ -1,0 +1,9 @@
+.otp-field {
+  width: 30px;
+  margin-right: 10px;
+  padding-left: 10px;
+  height: 40px;
+  border-radius: 100px;
+  border-width: 3px;
+  font-size: 20px;
+}
