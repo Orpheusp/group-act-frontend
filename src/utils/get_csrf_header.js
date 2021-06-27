@@ -5,7 +5,7 @@ export const CSRF_ACCESS_TOKEN_HEADER_NAME = 'X-CSRF-TOKEN';
 export function getCsrfHeader() {
   const headers = new Headers();
   const csrfAccessToken = getCookie(CSRF_ACCESS_TOKEN_COOKIE_NAME);
-  headers.append(`${CSRF_ACCESS_TOKEN_HEADER_NAME}=${csrfAccessToken}`);
+  headers.append(CSRF_ACCESS_TOKEN_HEADER_NAME, csrfAccessToken);
 
   return headers;
 }
