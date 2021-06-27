@@ -38,12 +38,8 @@ export function MockGroupProvider({ children, mockGroup = null }) {
 
 function useGroupProvider() {
   const [group, setGroup] = useState(null);
-  const [refreshUnsubscriber, setRefreshUnsubscriber] = useState(() => {});
 
-  // Update group status every 15s.
   const refreshGroup = async () => {
-    refreshUnsubscriber();
-
     if (!group) {
       return;
     }
@@ -51,22 +47,14 @@ function useGroupProvider() {
     const groupId = group['_id']['$oid'];
     const newGroup = await sendGetGroupRequest(groupId);
     setGroup(newGroup);
-
-    const timeoutId = setTimeout(refreshGroup, 15 * 1000);
-    setRefreshUnsubscriber(() => clearTimeout(timeoutId));
-  };
-
-  const cancelRefresh = () => {
-    refreshUnsubscriber();
   };
 
   const joinGroup = async (inviteCode, password) => {
     if (group) {
       console.log('Already in a group.');
     } else {
-      const newGroup = sendJoinGroupRequest(inviteCode, password);
+      const newGroup = await sendJoinGroupRequest(inviteCode, password);
       setGroup(newGroup);
-      refreshGroup();
     }
   };
 
@@ -74,15 +62,14 @@ function useGroupProvider() {
     if (group) {
       console.log('Already in a group.');
     } else {
-      const newGroup = sendCreateGroupRequest(displayName, password);
+      const newGroup = await sendCreateGroupRequest(displayName, password);
       setGroup(newGroup);
-      refreshGroup();
     }
   };
 
   return {
     group,
-    cancelRefresh,
+    refreshGroup,
     joinGroup,
     createGroup,
   };
