@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useHistory } from 'react-router';
 
-import { useAuth } from '../../services/auth_service/auth_service';
+import { useAuth } from '../../services/AuthService/AuthService';
 import { useGroup } from '../../services/group_service/group_service';
 
 export function GroupPage() {

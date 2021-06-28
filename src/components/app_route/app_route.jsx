@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useAuth } from '../../services/auth_service/auth_service';
+import { useAuth } from '../../services/AuthService/AuthService';
 import { Route, Redirect } from 'react-router-dom';
 
 export function AppRoute({ children, ...rest }) {

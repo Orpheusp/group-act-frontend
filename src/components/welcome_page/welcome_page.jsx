@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router';
 
-import { useAuth } from '../../services/auth_service/auth_service';
+import { useAuth } from '../../services/AuthService/AuthService';
 
 const SUBMIT_BUTTON_STATE = Object.freeze({
   HIDDEN: 0,
