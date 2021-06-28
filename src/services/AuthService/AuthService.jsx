@@ -74,12 +74,19 @@ export function MockAuthProvider({ children, user = mockUser }) {
     user,
     getOtp: (phoneNumber) => {
       console.log(`getOtp(${phoneNumber}) called.`);
+
+      // account exists
+      return true;
     },
     signIn: (phoneNumber, otp) => {
       console.log(`signIn(${phoneNumber}, ${otp}) called.`);
+
+      return mockUser;
     },
     signUp: (phoneNumber, otp) => {
       console.log(`signUp(${phoneNumber}, ${otp}) called.`);
+
+      return mockUser;
     },
     signOut: () => {
       console.log('signOut() called.');
