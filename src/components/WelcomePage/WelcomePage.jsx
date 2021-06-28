@@ -3,10 +3,13 @@ import { useHistory } from 'react-router';
 
 import { useAuth } from '../../services/AuthService/AuthService';
 import { Header } from '../Header/Header';
+import { Input } from '../Input/Input';
+import { Button, BUTTON_STYLE } from '../Button/Button';
+import { CodeInput } from '../CodeInput/CodeInput';
 
 import './WelcomePage.css';
 
-const SUBMIT_BUTTON_STATE = Object.freeze({
+const SUBMISSION_STATE = Object.freeze({
   HIDDEN: 0,
   LOG_IN: 1,
   SIGN_UP: 2,
@@ -14,9 +17,8 @@ const SUBMIT_BUTTON_STATE = Object.freeze({
 
 export function WelcomePage() {
   const [phoneNumber, setPhoneNumber] = useState('');
-  const [otp, setOtp] = useState('');
-  const [submitButtonState, setSubmitButtonState] = useState(
-    SUBMIT_BUTTON_STATE.HIDDEN
+  const [submissionState, setSubmissionState] = useState(
+    SUBMISSION_STATE.HIDDEN
   );
 
   const auth = useAuth();
@@ -24,47 +26,47 @@ export function WelcomePage() {
 
   const getOtp = async () => {
     const accountExists = await auth.getOtp(phoneNumber);
-    setSubmitButtonState(
-      accountExists ? SUBMIT_BUTTON_STATE.LOG_IN : SUBMIT_BUTTON_STATE.SIGN_UP
+    setSubmissionState(
+      accountExists ? SUBMISSION_STATE.LOG_IN : SUBMISSION_STATE.SIGN_UP
     );
   };
 
-  const signIn = async () => {
+  const signIn = async (otp) => {
     await auth.signIn(phoneNumber, otp);
     history.replace('/user');
   };
 
-  const signUp = async () => {
+  const signUp = async (otp) => {
     await auth.signUp(phoneNumber, otp);
     history.replace('/user');
   };
 
-  let submitButton = undefined;
-  if (submitButtonState === SUBMIT_BUTTON_STATE.LOG_IN) {
-    submitButton = <button onClick={signIn}>Log In</button>;
-  } else if (submitButtonState === SUBMIT_BUTTON_STATE.SIGN_UP) {
-    submitButton = <button onClick={signUp}>Sign Up</button>;
+  let submitSection = undefined;
+  if (submissionState === SUBMISSION_STATE.LOG_IN) {
+    submitSection = (
+      <CodeInput codeLength={4} onSubmit={(val) => signIn(val)} />
+    );
+  } else if (submissionState === SUBMISSION_STATE.SIGN_UP) {
+    submitSection = (
+      <CodeInput codeLength={4} onSubmit={(val) => signUp(val)} />
+    );
   }
 
   return (
     <div className={'welcome-page'}>
       <Header text={'group act'} />
-      <input
-        type="text"
+      <Input
         id="phone-number"
         value={phoneNumber}
-        size="65"
         onChange={(e) => setPhoneNumber(e.target.value)}
+        label={'Phone Number'}
       />
-      <button onClick={getOtp}>Send OTP</button>
-      <input
-        type="text"
-        id="otp"
-        value={otp}
-        size="65"
-        onChange={(e) => setOtp(e.target.value)}
+      <Button
+        buttonStyle={BUTTON_STYLE.BLACK}
+        onClick={getOtp}
+        text={'Send Verification Code'}
       />
-      {submitButton}
+      {submitSection}
     </div>
   );
 }
