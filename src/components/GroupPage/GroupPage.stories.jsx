@@ -1,7 +1,7 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 
-import { GroupPage } from './group_page';
+import { GroupPage } from './GroupPage';
 import { MockAuthProvider } from '../../services/AuthService/AuthService';
 import { MockGroupProvider } from '../../services/GroupService/GroupService';
 

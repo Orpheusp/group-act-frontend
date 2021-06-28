@@ -4,9 +4,9 @@ import { BrowserRouter as Router, Switch } from 'react-router-dom';
 import { AuthProvider } from '../services/AuthService/AuthService';
 import { GroupProvider } from '../services/GroupService/GroupService';
 import { UserPage } from '../components/user_page/user_page';
-import { GroupPage } from '../components/group_page/group_page';
+import { GroupPage } from '../components/GroupPage/GroupPage';
 import { WelcomePage } from '../components/welcome_page/welcome_page';
-import { AppRoute } from '../components/app_route/app_route';
+import { AppRoute } from '../components/AppRoute/AppRoute';
 
 import './App.css';
 
