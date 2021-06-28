@@ -1,12 +1,20 @@
 import React from 'react';
 
-import { Button } from './Button';
+import { Button, BUTTON_STYLE } from './Button';
 
 export default {
   title: 'Button',
   component: Button,
 };
 
-export const button = () => {
-  return <Button text={'test'} />;
+export const buttonBlack = () => {
+  return <Button text={'test'} buttonStyle={BUTTON_STYLE.BLACK} />;
+};
+
+export const buttonGreen = () => {
+  return <Button text={'test'} buttonStyle={BUTTON_STYLE.GREEN} />;
+};
+
+export const buttonHollow = () => {
+  return <Button text={'test'} buttonStyle={BUTTON_STYLE.HOLLOW} />;
 };

@@ -1,10 +1,17 @@
 import React from 'react';
 import './Button.css';
 
-export function Button(props) {
+export const BUTTON_STYLE = Object.freeze({
+  BLACK: 'button__black',
+  GREEN: 'button__green',
+  HOLLOW: 'button__hollow',
+});
+
+export function Button({ buttonStyle = BUTTON_STYLE.BLACK, text, ...rest }) {
   return (
-    <div>
-      <button className="buttonw"> {props.text} </button>
-    </div>
+    <button className={`button ${buttonStyle}`} {...rest}>
+      {' '}
+      {text}{' '}
+    </button>
   );
 }
