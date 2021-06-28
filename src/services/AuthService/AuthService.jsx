@@ -5,7 +5,7 @@ import {
   sendSignInRequest,
   sendSignUpRequest,
   sendSignOutRequest,
-} from './authRequestActions';
+} from './AuthRequestActions';
 
 const authContext = createContext();
 
