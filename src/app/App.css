@@ -1,10 +1,8 @@
 .App {
-  /* flex-direction: column; */
-  text-align: center;
-}
-
-.div1 {
-  margin-top: 30%;
+  width: 25rem;
+  height: 50rem;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .bottom_button {
