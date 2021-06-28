@@ -10,6 +10,7 @@ import { AppRoute } from '../components/app_route/app_route';
 
 import './App.css';
 
+export function App() {
   return (
     <GroupProvider>
       <AuthProvider>
@@ -32,5 +33,3 @@ import './App.css';
     </GroupProvider>
   );
 }
-
-export default App;
