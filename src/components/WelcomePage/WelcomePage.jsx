@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router';
 
 import { useAuth } from '../../services/AuthService/AuthService';
+import { Header } from '../Header/Header';
+
+import './WelcomePage.css';
 
 const SUBMIT_BUTTON_STATE = Object.freeze({
   HIDDEN: 0,
@@ -44,8 +47,8 @@ export function WelcomePage() {
   }
 
   return (
-    <div>
-      <div>Welcome, please log in</div>
+    <div className={'WelcomePage'}>
+      <Header text={'GROUP ACT'} />
       <input
         type="text"
         id="phone-number"

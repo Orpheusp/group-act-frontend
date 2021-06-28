@@ -13,7 +13,9 @@ export default {
       <MockGroupProvider mockGroup={'group'}>
         <MockAuthProvider mockUser={'user'}>
           <MemoryRouter>
-            <Story />
+            <div className={'story-container'}>
+              <Story />
+            </div>
           </MemoryRouter>
         </MockAuthProvider>
       </MockGroupProvider>
