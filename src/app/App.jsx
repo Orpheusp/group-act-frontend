@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch } from 'react-router-dom';
 
 import { AuthProvider } from '../services/AuthService/AuthService';
-import { GroupProvider } from '../services/group_service/group_service';
+import { GroupProvider } from '../services/GroupService/GroupService';
 import { UserPage } from '../components/user_page/user_page';
 import { GroupPage } from '../components/group_page/group_page';
 import { WelcomePage } from '../components/welcome_page/welcome_page';

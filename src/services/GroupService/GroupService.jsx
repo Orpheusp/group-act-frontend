@@ -4,7 +4,7 @@ import {
   sendGetGroupRequest,
   sendJoinGroupRequest,
   sendCreateGroupRequest,
-} from './group_request_actions';
+} from './GroupRequestActions';
 
 const groupContext = createContext();
 

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router';
 
 import { useAuth } from '../../services/AuthService/AuthService';
-import { useGroup } from '../../services/group_service/group_service';
+import { useGroup } from '../../services/GroupService/GroupService';
 
 export function UserPage() {
   const auth = useAuth();

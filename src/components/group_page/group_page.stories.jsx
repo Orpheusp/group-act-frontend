@@ -3,7 +3,7 @@ import { MemoryRouter } from 'react-router-dom';
 
 import { GroupPage } from './group_page';
 import { MockAuthProvider } from '../../services/AuthService/AuthService';
-import { MockGroupProvider } from '../../services/group_service/group_service';
+import { MockGroupProvider } from '../../services/GroupService/GroupService';
 
 export default {
   title: 'GroupPage',
