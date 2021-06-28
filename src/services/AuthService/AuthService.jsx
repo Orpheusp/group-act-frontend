@@ -18,29 +18,6 @@ export function useAuth() {
   return useContext(authContext);
 }
 
-export function MockAuthProvider({ children, mockUser = null }) {
-  const mockAuthContext = {
-    user: mockUser,
-    getOtp: (phoneNumber) => {
-      console.log(`getOtp(${phoneNumber}) called.`);
-    },
-    signIn: (phoneNumber, otp) => {
-      console.log(`signIn(${phoneNumber}, ${otp}) called.`);
-    },
-    signUp: (phoneNumber, otp) => {
-      console.log(`signUp(${phoneNumber}, ${otp}) called.`);
-    },
-    signOut: () => {
-      console.log('signOut() called.');
-    },
-  };
-  return (
-    <authContext.Provider value={mockAuthContext}>
-      {children}
-    </authContext.Provider>
-  );
-}
-
 function useAuthProvider() {
   // If the server found cookie containing logged in user credential, it will
   // write a user profile object to `window`, through which the front-end can
@@ -91,3 +68,33 @@ function useAuthProvider() {
     signOut,
   };
 }
+
+export function MockAuthProvider({ children, user = mockUser }) {
+  const mockAuthContext = {
+    user,
+    getOtp: (phoneNumber) => {
+      console.log(`getOtp(${phoneNumber}) called.`);
+    },
+    signIn: (phoneNumber, otp) => {
+      console.log(`signIn(${phoneNumber}, ${otp}) called.`);
+    },
+    signUp: (phoneNumber, otp) => {
+      console.log(`signUp(${phoneNumber}, ${otp}) called.`);
+    },
+    signOut: () => {
+      console.log('signOut() called.');
+    },
+  };
+  return (
+    <authContext.Provider value={mockAuthContext}>
+      {children}
+    </authContext.Provider>
+  );
+}
+
+const mockUser = {
+  _id: { $oid: '60c82ee919a4e440b95a7a1f' },
+  displayName: 'test user',
+  phoneNumber: '+16145865715',
+  preferences: [0],
+};

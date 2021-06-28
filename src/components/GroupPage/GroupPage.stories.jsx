@@ -10,8 +10,8 @@ export default {
   component: GroupPage,
   decorators: [
     (Story) => (
-      <MockGroupProvider mockGroup={'group'}>
-        <MockAuthProvider mockUser={'user'}>
+      <MockGroupProvider>
+        <MockAuthProvider>
           <MemoryRouter>
             <Story />
           </MemoryRouter>

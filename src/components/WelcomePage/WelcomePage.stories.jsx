@@ -10,8 +10,8 @@ export default {
   component: WelcomePage,
   decorators: [
     (Story) => (
-      <MockGroupProvider mockGroup={'group'}>
-        <MockAuthProvider mockUser={'user'}>
+      <MockGroupProvider>
+        <MockAuthProvider>
           <MemoryRouter>
             <div className={'story-container'}>
               <Story />

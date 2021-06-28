@@ -19,23 +19,6 @@ export function useGroup() {
   return useContext(groupContext);
 }
 
-export function MockGroupProvider({ children, mockGroup = null }) {
-  const mockGroupContext = {
-    group: mockGroup,
-    joinGroup: (inviteCode, password) => {
-      console.log(`joinGroup(${inviteCode}, ${password}) called.`);
-    },
-    createGroup: (displayName, password) => {
-      console.log(`createGroup(${displayName}, ${password}) called.`);
-    },
-  };
-  return (
-    <groupContext.Provider value={mockGroupContext}>
-      {children}
-    </groupContext.Provider>
-  );
-}
-
 function useGroupProvider() {
   const [group, setGroup] = useState(null);
 
@@ -74,3 +57,32 @@ function useGroupProvider() {
     createGroup,
   };
 }
+
+export function MockGroupProvider({ children, group = mockGroup }) {
+  const mockGroupContext = {
+    group,
+    joinGroup: (inviteCode, password) => {
+      console.log(`joinGroup(${inviteCode}, ${password}) called.`);
+    },
+    createGroup: (displayName, password) => {
+      console.log(`createGroup(${displayName}, ${password}) called.`);
+    },
+  };
+  return (
+    <groupContext.Provider value={mockGroupContext}>
+      {children}
+    </groupContext.Provider>
+  );
+}
+
+const mockGroup = {
+  _id: { $oid: '60d78e742bf0316e5e73b0ac' },
+  createdTime: { $date: 1624739444679 },
+  creatorId: { $oid: '60c82ee919a4e440b95a7a1f' },
+  displayName: 'test group',
+  expiryTime: { $date: 1624743044679 },
+  inviteCode: 'rhhg',
+  members: [{ $oid: '60c82ee919a4e440b95a7a1f' }],
+  passwordHash: '$2b$16$wVAPbXWM5.tY3jT/kqPs.OGh7LgMkLHQOx4qPDXPusHcDQ8UwqPSC',
+  preferences: [],
+};
