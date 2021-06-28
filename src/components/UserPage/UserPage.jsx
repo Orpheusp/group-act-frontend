@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router';
 
+import { Header } from '../Header/Header';
 import { useAuth } from '../../services/AuthService/AuthService';
 import { useGroup } from '../../services/GroupService/GroupService';
+import { SubHeader } from '../SubHeader/SubHeader';
+
+import './UserPage.css';
 
 export function UserPage() {
   const auth = useAuth();
@@ -33,9 +37,9 @@ export function UserPage() {
   };
 
   return (
-    <div>
-      <div>User Front Page</div>
-      <div>{JSON.stringify(auth.user)}</div>
+    <div className={'user-page'}>
+      <SubHeader text={`user: ${auth.user.displayName}`} />
+      <Header text={'personal preference'} />
       <div>
         Join Group
         <input
