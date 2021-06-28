@@ -47,8 +47,8 @@ export function WelcomePage() {
   }
 
   return (
-    <div className={'WelcomePage'}>
-      <Header text={'GROUP ACT'} />
+    <div className={'welcome-page'}>
+      <Header text={'group act'} />
       <input
         type="text"
         id="phone-number"
