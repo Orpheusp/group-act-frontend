@@ -61,6 +61,9 @@ function useGroupProvider() {
 export function MockGroupProvider({ children, group = mockGroup }) {
   const mockGroupContext = {
     group,
+    refreshGroup: () => {
+      console.log('refreshGroup() called.');
+    },
     joinGroup: (inviteCode, password) => {
       console.log(`joinGroup(${inviteCode}, ${password}) called.`);
     },
