@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { Modal } from './AddModal.jsx';
+import { AddModal } from './AddModal.jsx';
 
 export default {
-  title: 'Modal',
-  component: Modal,
+  title: 'AddModal',
+  component: AddModal,
 };
 
-export const modal = () => {
-  return <Modal />;
+export const addModal = () => {
+  return <AddModal />;
 };
