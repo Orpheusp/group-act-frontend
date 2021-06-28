@@ -5,4 +5,5 @@
   color: var(--color-black);
   text-align: left;
   letter-spacing: 0.0625rem;
+  text-transform: uppercase;
 }

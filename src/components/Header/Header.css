@@ -4,4 +4,6 @@
   margin: 0;
   color: var(--color-black);
   text-align: left;
+  text-transform: uppercase;
+  line-height: 3rem;
 }
