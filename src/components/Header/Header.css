@@ -1,7 +1,8 @@
 .header {
+  box-sizing: border-box;
   font-size: 3rem;
   font-weight: bold;
-  margin: 0;
+  margin-bottom: 1.25rem;
   color: var(--color-black);
   text-align: left;
   text-transform: uppercase;
