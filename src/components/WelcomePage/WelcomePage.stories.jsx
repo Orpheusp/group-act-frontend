@@ -1,9 +1,9 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 
-import { WelcomePage } from './welcome_page';
-import { MockAuthProvider } from '../../services/auth_service/auth_service';
-import { MockGroupProvider } from '../../services/group_service/group_service';
+import { WelcomePage } from './WelcomePage';
+import { MockAuthProvider } from '../../services/AuthService/AuthService';
+import { MockGroupProvider } from '../../services/GroupService/GroupService';
 
 export default {
   title: 'WelcomePage',
