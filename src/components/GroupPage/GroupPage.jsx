@@ -1,24 +1,14 @@
 import React, { useEffect } from 'react';
-import { useHistory } from 'react-router';
 
-import { useAuth } from '../../services/AuthService/AuthService';
 import { useGroup } from '../../services/GroupService/GroupService';
 import { Header } from '../Header/Header';
 import { SubHeader } from '../SubHeader/SubHeader';
+import { ActivityList } from '../ActivityList/ActivityList';
 
 import './GroupPage.css';
 
 export function GroupPage() {
-  const auth = useAuth();
-  const history = useHistory();
   const group = useGroup();
-
-  const logOut = () => {
-    auth.signOut(() => {
-      history.replace('/');
-      console.log('logged out.');
-    });
-  };
 
   // Update group status every 15s.
   useEffect(() => {
@@ -37,8 +27,14 @@ export function GroupPage() {
       <Header text={'group priority list'} />
       <SubHeader text={`group size: ${groupSize}`} />
       <SubHeader text={`invite code: ${inviteCode}`} />
-      <div>{JSON.stringify(group.group)}</div>
-      <button onClick={logOut}>Log Out</button>
+      <ActivityList
+        readonly={true}
+        activityPreferences={getActivities(group.group?.preferences || [])}
+      />
     </div>
   );
+}
+
+function getActivities(preferences) {
+  return preferences.map(({ activityType }) => activityType);
 }
