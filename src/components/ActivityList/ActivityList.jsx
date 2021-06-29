@@ -12,9 +12,11 @@ import {
   downvoteSelectedActivity,
   unselectActivity,
   replaceSelectedActivity,
+  selectActivity,
 } from '../../services/ActivityStore/ActivityStore';
 
 import './ActivityList.css';
+import { AddActivityButton } from '../AddActivityButton/AddActivityButton';
 
 export function ActivityList({
   readonly,
@@ -51,17 +53,32 @@ export function ActivityList({
   const handleModalSelect = (activity) => {
     const newActivity = activity;
     setModalVisible(false);
-    const newActivityStore = replaceSelectedActivity(
-      activityStore,
-      activityToReplace,
-      newActivity
-    );
+    let newActivityStore;
+    if (activityToReplace) {
+      newActivityStore = replaceSelectedActivity(
+        activityStore,
+        activityToReplace,
+        newActivity
+      );
+    } else {
+      newActivityStore = selectActivity(activityStore, newActivity);
+    }
     setActivityStore(newActivityStore);
     setActivityToReplace(null);
   };
 
+  const addActivity = () => {
+    setActivityToReplace(null);
+    setModalVisible(true);
+  };
+
+  const addActivityButton =
+    itemMode === ACTIVITY_ITEM_MODE.VIEWING ? undefined : (
+      <AddActivityButton onClick={addActivity} />
+    );
+
   return (
-    <div className={'activity-form'}>
+    <div className={'activity-list'}>
       {selectedActivities.map((activity, index) =>
         getActivityItem(
           itemMode,
@@ -73,18 +90,21 @@ export function ActivityList({
           setModalVisible
         )
       )}
+      {addActivityButton}
       <ActivitySelectionModal
         isOpen={modalVisible}
         toggle={cancelModal}
         activities={unselectedActivities}
         onSelect={handleModalSelect}
       />
-      {getEditButton(
-        itemMode,
-        setItemMode,
-        onPreferencesChange,
-        selectedActivities
-      )}
+      <div className={'activity-list--edit-button-container'}>
+        {getEditButton(
+          itemMode,
+          setItemMode,
+          onPreferencesChange,
+          selectedActivities
+        )}
+      </div>
     </div>
   );
 }

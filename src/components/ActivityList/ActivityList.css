@@ -1,44 +1,15 @@
-.toggleButton {
-  width: 100px;
+.activity-list {
+  height: 35rem;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
-.mbody {
-  text-align: center;
-}
-
-.options {
-  margin-top: 10px;
-  width: 200px;
-}
-
-.todo-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 10px auto;
-  background: white;
-  border: 2px solid black;
-  border-radius: 15px;
-  padding: 16px;
-  width: 90%;
-}
-.icons {
-  display: flex;
-  align-items: center;
-  font-size: 24px;
-  cursor: pointer;
-}
-
-.up {
-  margin-right: 10px;
-  color: black;
-}
-
-.down {
-  margin-right: 10px;
-  color: black;
-}
-
-.remove {
-  color: black;
+.activity-list--edit-button-container {
+  background-color: var(--color-white);
+  position: sticky;
+  left: 0;
+  bottom: 0;
+  padding: 0.3rem;
+  width: 100%;
 }
