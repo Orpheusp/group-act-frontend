@@ -6,6 +6,9 @@ import { useAuth } from '../../services/AuthService/AuthService';
 import { useGroup } from '../../services/GroupService/GroupService';
 import { SubHeader } from '../SubHeader/SubHeader';
 import { ActivityList } from '../ActivityList/ActivityList';
+import { Button, BUTTON_STYLE } from '../Button/Button';
+import { CreateGroupModal } from '../CreateGroupModal/CreateGroupModal';
+import { JoinGroupModal } from '../JoinGroupModal/JoinGroupModal';
 
 import './UserPage.css';
 
@@ -14,10 +17,10 @@ export function UserPage() {
   const history = useHistory();
   const group = useGroup();
 
-  const [inviteCode, setInviteCode] = useState('');
-  const [password, setPassword] = useState('');
-  const [displayName, setDisplayName] = useState('');
-  const [newGroupPassword, setNewGroupPassword] = useState('');
+  const [modalVisible, setModalVisible] = useState({
+    joinGroupModal: false,
+    createGroupModal: false,
+  });
 
   const logOut = async () => {
     await auth.signOut();
@@ -25,14 +28,14 @@ export function UserPage() {
     console.log('logged out.');
   };
 
-  const joinGroup = async () => {
+  const joinGroup = async ({ inviteCode, password }) => {
     await group.joinGroup(inviteCode, password);
     history.replace('/group');
     console.log('group entered');
   };
 
-  const createGroup = async () => {
-    await group.createGroup(displayName, newGroupPassword);
+  const createGroup = async ({ displayName, password }) => {
+    await group.createGroup(displayName, password);
     history.replace('/group');
     console.log('group entered');
   };
@@ -43,51 +46,60 @@ export function UserPage() {
     }
   };
 
+  const closeModal = () => {
+    setModalVisible({
+      createGroupModal: false,
+      joinGroupModal: false,
+    });
+  };
+
+  const openJoinGroupModal = () => {
+    setModalVisible({
+      createGroupModal: false,
+      joinGroupModal: true,
+    });
+  };
+
+  const openCreateGroupModal = () => {
+    setModalVisible({
+      createGroupModal: true,
+      joinGroupModal: false,
+    });
+  };
+
   return (
     <div className={'user-page'}>
       <SubHeader text={`user: ${auth.user.displayName}`} />
       <Header text={'personal preference'} />
-      <div>
-        Join Group
-        <input
-          type="text"
-          id="invite-code"
-          value={inviteCode}
-          size="65"
-          onChange={(e) => setInviteCode(e.target.value)}
-        />
-        <input
-          type="password"
-          id="password"
-          value={password}
-          size="65"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button onClick={joinGroup}>Join Group</button>
-      </div>
-      <div>
-        Create Group
-        <input
-          type="text"
-          id="display-name"
-          value={displayName}
-          size="65"
-          onChange={(e) => setDisplayName(e.target.value)}
-        />
-        <input
-          type="password"
-          id="new-group-password"
-          value={newGroupPassword}
-          size="65"
-          onChange={(e) => setNewGroupPassword(e.target.value)}
-        />
-        <button onClick={createGroup}>Create Group</button>
-      </div>
-      <button onClick={logOut}>Log Out</button>
+      <Button
+        onClick={openJoinGroupModal}
+        text={'Join group'}
+        buttonStyle={BUTTON_STYLE.BLACK}
+      />
+      <Button
+        onClick={openCreateGroupModal}
+        text={'Create group'}
+        buttonStyle={BUTTON_STYLE.HOLLOW}
+      />
+      <Button
+        onClick={logOut}
+        text={'Log out'}
+        buttonStyle={BUTTON_STYLE.HOLLOW}
+      />
       <ActivityList
         readonly={false}
         activityPreferences={auth.user.preferences || []}
         onPreferencesChange={submitPreferenceChange}
+      />
+      <CreateGroupModal
+        isOpen={modalVisible.createGroupModal}
+        toggle={closeModal}
+        onSubmit={(value) => createGroup(value)}
+      />
+      <JoinGroupModal
+        isOpen={modalVisible.joinGroupModal}
+        toggle={closeModal}
+        onSubmit={(value) => joinGroup(value)}
       />
     </div>
   );
