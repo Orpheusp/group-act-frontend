@@ -5,6 +5,7 @@ import {
   sendSignInRequest,
   sendSignUpRequest,
   sendSignOutRequest,
+  sendUserPreferencesUpdateRequest,
 } from './AuthRequestActions';
 
 const authContext = createContext();
@@ -60,12 +61,22 @@ function useAuthProvider() {
     }
   };
 
+  const updatePreferences = async (preferences) => {
+    if (user) {
+      const userId = user._id.$oid;
+      await sendUserPreferencesUpdateRequest(userId, preferences);
+    } else {
+      console.log('Not logged in.');
+    }
+  };
+
   return {
     user,
     getOtp,
     signIn,
     signUp,
     signOut,
+    updatePreferences,
   };
 }
 
@@ -90,6 +101,9 @@ export function MockAuthProvider({ children, user = mockUser }) {
     },
     signOut: () => {
       console.log('signOut() called.');
+    },
+    updatePreferences: (preferences) => {
+      console.log(`updatePreferences(${preferences}) called.`);
     },
   };
   return (

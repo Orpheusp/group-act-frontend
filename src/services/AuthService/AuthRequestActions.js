@@ -69,3 +69,23 @@ export async function sendSignOutRequest() {
 
   await fetch(url, requestOptions);
 }
+
+export async function sendUserPreferencesUpdateRequest(userId, preferences) {
+  // CSRF header is needed since this is a privileged PUT operation.
+  const headers = getCsrfHeader();
+  headers.append('Content-Type', 'application/json');
+
+  const url = new URL(
+    `${USERS_ENDPOINT_URL}/${userId}`,
+    window.location.origin
+  );
+  const body = JSON.stringify({ preferences });
+  const requestOptions = {
+    method: 'PUT',
+    headers,
+    body,
+    redirect: 'follow',
+  };
+
+  await fetch(url, requestOptions);
+}
