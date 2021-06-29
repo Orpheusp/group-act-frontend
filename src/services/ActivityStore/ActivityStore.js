@@ -95,6 +95,29 @@ export function selectActivity(activityStore, activity) {
   return newAcvitityStore;
 }
 
+export function replaceSelectedActivity(
+  activityStore,
+  oldActivity,
+  newActivity
+) {
+  if (
+    !activityStore[oldActivity].selected ||
+    activityStore[newActivity].selected
+  ) {
+    return activityStore;
+  }
+
+  const newActivityStore = { ...activityStore };
+
+  // Swap the status
+  newActivityStore[newActivity].selected = true;
+  newActivityStore[newActivity].rank = newActivityStore[oldActivity].rank;
+  newActivityStore[oldActivity].selected = false;
+  delete newActivityStore[oldActivity].rank;
+
+  return newActivityStore;
+}
+
 function findActivityWithRank(activityStore, rank) {
   const targets = Object.entries(activityStore).filter(
     ([key, value]) => value.rank === rank
