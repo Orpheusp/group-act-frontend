@@ -16,6 +16,7 @@
 .button:disabled:focus {
   color: var(--color-white);
   background-color: var(--color-grey);
+  border: none;
   cursor: default;
 }
 
