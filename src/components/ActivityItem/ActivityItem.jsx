@@ -4,7 +4,7 @@ import { MdArrowUpward } from 'react-icons/md';
 import { MdArrowDownward } from 'react-icons/md';
 import { MdClose } from 'react-icons/md';
 
-import { ACTIVITY_LIST } from '../../ActivityList';
+import { ACTIVITY_LIST } from '../../services/ActivityStore/ActivityList';
 
 import './ActivityItem.css';
 

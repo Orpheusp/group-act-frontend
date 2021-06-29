@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 
-import { ACTIVITY_LIST } from '../../ActivityList';
+import { ACTIVITY_LIST } from '../../services/ActivityStore/ActivityList';
 
 import './ActivitySelectionModal.css';
 
