@@ -30,6 +30,9 @@
   line-height: 2.75rem;
   transition: all linear 0.1s;
   width: calc(100% - 3.125rem - 3rem * 3);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .activity-item__viewing .activity-item--label {

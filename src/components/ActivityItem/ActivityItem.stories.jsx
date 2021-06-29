@@ -17,7 +17,7 @@ export default {
 export const activityItemEditing = () => {
   return (
     <ActivityItem
-      activity={1}
+      activity={6}
       mode={ACTIVITY_ITEM_MODE.EDITING}
       select={() => {
         console.log('select()');
@@ -37,5 +37,5 @@ export const activityItemEditing = () => {
 };
 
 export const activityItemViewing = () => {
-  return <ActivityItem activity={1} index={12} />;
+  return <ActivityItem activity={6} index={12} />;
 };
