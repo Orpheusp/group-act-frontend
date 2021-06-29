@@ -5,6 +5,13 @@ import { Button, BUTTON_STYLE } from './Button';
 export default {
   title: 'Button',
   component: Button,
+  decorators: [
+    (Story) => (
+      <div className={'story-container'}>
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export const buttonBlack = () => {
