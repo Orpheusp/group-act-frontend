@@ -34,7 +34,7 @@ export function CreateGroupModal({ isOpen, toggle, onSubmit }) {
           }
         />
         <Input
-          label={'Group Password'}
+          label={'Group Password (Optional)'}
           type={'password'}
           value={groupInfo.password}
           onChange={(e) =>
