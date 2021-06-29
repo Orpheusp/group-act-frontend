@@ -1,8 +1,5 @@
 .activity-list {
-  height: 35rem;
   position: relative;
-  overflow-x: hidden;
-  overflow-y: auto;
 }
 
 .activity-list--edit-button-container {

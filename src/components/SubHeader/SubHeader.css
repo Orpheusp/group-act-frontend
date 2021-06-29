@@ -1,10 +1,9 @@
 .sub-header {
   box-sizing: border-box;
-  font-size: 1rem;
+  font-size: 1.125rem;
   font-weight: bold;
-  margin: 0.5rem 0.25rem;
+  margin: 0.125rem 0;
   color: var(--color-black);
   text-align: left;
-  letter-spacing: 0.0625rem;
   text-transform: uppercase;
 }
