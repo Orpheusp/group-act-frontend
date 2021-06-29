@@ -1,0 +1,10 @@
+.join-group-modal .modal-content {
+  background-color: var(--color-white);
+}
+
+.join-group-modal--header h5 {
+  font-size: 1.75rem;
+  color: var(--color-black);
+  font-weight: bold;
+  text-align: center;
+}
