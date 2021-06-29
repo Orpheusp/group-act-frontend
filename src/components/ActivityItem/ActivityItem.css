@@ -1,0 +1,90 @@
+.activity-item {
+  cursor: pointer;
+  box-sizing: border-box;
+  width: 100%;
+  height: 3rem;
+  border-radius: 1rem;
+  border: 0.125rem solid var(--color-black);
+  overflow: hidden;
+  position: relative;
+}
+
+.activity-item__readonly {
+  cursor: default;
+}
+
+.activity-item--index,
+.activity-item--label,
+.activity-item--actions {
+  box-sizing: border-box;
+  display: inline-block;
+  position: absolute;
+}
+
+.activity-item--label {
+  top: 0;
+  left: 3.125rem;
+  padding-left: 1rem;
+  font-size: 1.5rem;
+  line-height: 2.75rem;
+  transition: all linear 0.1s;
+  width: calc(100% - 3.125rem - 3rem * 3);
+}
+
+.activity-item__readonly .activity-item--label {
+  width: calc(100% - 3.125rem);
+  transition: none;
+  background-color: var(--color-white);
+}
+
+.activity-item__readonly .activity-item--index:focus ~ .activity-item--label,
+.activity-item__readonly .activity-item--index:active ~ .activity-item--label,
+.activity-item__readonly .activity-item--index:hover ~ .activity-item--label,
+.activity-item__readonly .activity-item--label:focus,
+.activity-item__readonly .activity-item--label:active,
+.activity-item__readonly .activity-item--label:hover {
+  background-color: var(--color-white);
+}
+
+.activity-item--index:focus ~ .activity-item--label,
+.activity-item--index:active ~ .activity-item--label,
+.activity-item--index:hover ~ .activity-item--label,
+.activity-item--label:focus,
+.activity-item--label:active,
+.activity-item--label:hover {
+  background-color: var(--color-light-grey-faded);
+}
+
+.activity-item--actions {
+  box-sizing: border-box;
+  top: 0;
+  right: 0;
+}
+
+.activity-item--index {
+  width: 3.125rem;
+  height: 100%;
+  line-height: 2.75rem;
+  background-color: var(--color-red);
+  border-right: 0.125rem solid var(--color-black);
+  top: 0;
+  left: 0;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.activity-item--action {
+  box-sizing: border-box;
+  border-left: 0.125rem solid var(--color-black);
+  background-color: var(--color-white);
+  height: 3rem;
+  width: 3rem;
+  padding: 0.625rem;
+  transition: all linear 0.1s;
+}
+
+.activity-item--action:hover,
+.activity-item--action:focus,
+.activity-item--action:active {
+  background-color: var(--color-light-grey-faded);
+}
