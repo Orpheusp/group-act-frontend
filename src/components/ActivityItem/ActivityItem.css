@@ -2,8 +2,8 @@
   cursor: pointer;
   box-sizing: border-box;
   width: 100%;
-  height: 3rem;
-  border-radius: 1rem;
+  height: 2.5rem;
+  border-radius: 0.5rem;
   border: 0.125rem solid var(--color-black);
   overflow: hidden;
   position: relative;
@@ -23,20 +23,21 @@
 }
 
 .activity-item--label {
+  box-sizing: border-box;
   top: 0;
-  left: 3.125rem;
-  padding-left: 1rem;
-  font-size: 1.5rem;
-  line-height: 2.75rem;
+  left: 2.5rem;
+  padding-left: 0.5rem;
+  font-size: 1.25rem;
+  line-height: 2.25rem;
   transition: all linear 0.1s;
-  width: calc(100% - 3.125rem - 3rem * 3);
+  width: calc(100% - 2.5rem - 2rem * 3);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
 .activity-item__viewing .activity-item--label {
-  width: calc(100% - 3.125rem);
+  width: calc(100% - 2.5rem);
   transition: none;
   background-color: var(--color-white);
 }
@@ -66,24 +67,24 @@
 }
 
 .activity-item--index {
-  width: 3.125rem;
+  width: 2.5rem;
   height: 100%;
-  line-height: 2.75rem;
+  line-height: 2.25rem;
   background-color: var(--color-red);
   border-right: 0.125rem solid var(--color-black);
   top: 0;
   left: 0;
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
 }
 
 .activity-item--action {
   box-sizing: border-box;
   border-left: 0.125rem solid var(--color-black);
   background-color: var(--color-white);
-  height: 3rem;
-  width: 3rem;
-  padding: 0.625rem;
+  height: 2.5rem;
+  width: 2rem;
+  padding: 0.375rem;
   transition: all linear 0.1s;
 }
 

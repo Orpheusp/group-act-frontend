@@ -46,7 +46,10 @@ export function ActivityItem({
   return (
     <div className={`activity-item ${mode}`} {...rest}>
       <div className={'activity-item--index'}>{index}</div>
-      <div className={'activity-item--label'} onClick={select}>
+      <div
+        className={'activity-item--label'}
+        onClick={mode === ACTIVITY_ITEM_MODE.EDITING ? select : undefined}
+      >
         {ACTIVITY_LIST[activity]}
       </div>
       {actions}
