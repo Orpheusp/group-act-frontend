@@ -103,5 +103,5 @@ const mockUser = {
   _id: { $oid: '60c82ee919a4e440b95a7a1f' },
   displayName: 'test user',
   phoneNumber: '+16145865715',
-  preferences: [0],
+  preferences: [1, 5, 16, 8, 9, 7, 22, 13, 17, 19, 14],
 };

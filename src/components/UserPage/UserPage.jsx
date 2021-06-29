@@ -5,6 +5,7 @@ import { Header } from '../Header/Header';
 import { useAuth } from '../../services/AuthService/AuthService';
 import { useGroup } from '../../services/GroupService/GroupService';
 import { SubHeader } from '../SubHeader/SubHeader';
+import { ActivityList } from '../ActivityList/ActivityList';
 
 import './UserPage.css';
 
@@ -34,6 +35,12 @@ export function UserPage() {
     await group.createGroup(displayName, newGroupPassword);
     history.replace('/group');
     console.log('group entered');
+  };
+
+  const submitPreferenceChange = async (newPreferences) => {
+    if (arrayEqual(auth.user.preferences, newPreferences)) {
+      return;
+    }
   };
 
   return (
@@ -77,6 +84,18 @@ export function UserPage() {
         <button onClick={createGroup}>Create Group</button>
       </div>
       <button onClick={logOut}>Log Out</button>
+      <ActivityList
+        readonly={false}
+        activityPreferences={auth.user.preferences || []}
+        onPreferencesChange={submitPreferenceChange}
+      />
     </div>
+  );
+}
+
+function arrayEqual(array1, array2) {
+  return (
+    array1.length === array2.length &&
+    array1.every((value, index) => value === array2[index])
   );
 }
