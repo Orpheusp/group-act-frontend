@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ActivityItem } from './ActivityItem';
+import { ActivityItem, ACTIVITY_ITEM_MODE } from './ActivityItem';
 
 export default {
   title: 'ActivityItem',
@@ -14,10 +14,11 @@ export default {
   ],
 };
 
-export const activityItem = () => {
+export const activityItemEditing = () => {
   return (
     <ActivityItem
       activity={1}
+      mode={ACTIVITY_ITEM_MODE.EDITING}
       select={() => {
         console.log('select()');
       }}
@@ -35,24 +36,6 @@ export const activityItem = () => {
   );
 };
 
-export const activityItemReadonly = () => {
-  return (
-    <ActivityItem
-      activity={1}
-      readonly={true}
-      select={() => {
-        console.log('select()');
-      }}
-      moveUp={() => {
-        console.log('moveUp()');
-      }}
-      moveDown={() => {
-        console.log('moveDown()');
-      }}
-      remove={() => {
-        console.log('remove()');
-      }}
-      index={12}
-    />
-  );
+export const activityItemViewing = () => {
+  return <ActivityItem activity={1} index={12} />;
 };

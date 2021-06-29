@@ -7,9 +7,10 @@
   border: 0.125rem solid var(--color-black);
   overflow: hidden;
   position: relative;
+  margin: 0.5rem 0;
 }
 
-.activity-item__readonly {
+.activity-item__viewing {
   cursor: default;
 }
 
@@ -31,18 +32,18 @@
   width: calc(100% - 3.125rem - 3rem * 3);
 }
 
-.activity-item__readonly .activity-item--label {
+.activity-item__viewing .activity-item--label {
   width: calc(100% - 3.125rem);
   transition: none;
   background-color: var(--color-white);
 }
 
-.activity-item__readonly .activity-item--index:focus ~ .activity-item--label,
-.activity-item__readonly .activity-item--index:active ~ .activity-item--label,
-.activity-item__readonly .activity-item--index:hover ~ .activity-item--label,
-.activity-item__readonly .activity-item--label:focus,
-.activity-item__readonly .activity-item--label:active,
-.activity-item__readonly .activity-item--label:hover {
+.activity-item__viewing .activity-item--index:focus ~ .activity-item--label,
+.activity-item__viewing .activity-item--index:active ~ .activity-item--label,
+.activity-item__viewing .activity-item--index:hover ~ .activity-item--label,
+.activity-item__viewing .activity-item--label:focus,
+.activity-item__viewing .activity-item--label:active,
+.activity-item__viewing .activity-item--label:hover {
   background-color: var(--color-white);
 }
 
