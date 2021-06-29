@@ -17,9 +17,9 @@ export default {
 export const codeInputFour = () => {
   return (
     <CodeInput
-      codeLength={4}
-      submitText={'Submit'}
-      onSubmit={(value) => console.log(value)}
+      code={['a', 'b', 'c', 'd']}
+      label={'Verification Code'}
+      onChange={(v) => console.log(v)}
     />
   );
 };
@@ -27,9 +27,9 @@ export const codeInputFour = () => {
 export const codeInputSix = () => {
   return (
     <CodeInput
-      codeLength={6}
-      submitText={'Submit'}
-      onSubmit={(value) => console.log(value)}
+      code={[1, 9, 4, 5, 8, 0]}
+      label={'Verification Code'}
+      onChange={(v) => console.log(v)}
     />
   );
 };
