@@ -1,64 +1,35 @@
-import React, { useState } from 'react';
-import './App.css';
-// import { Header } from '../components/Header/Header';
-// import { Button } from '../components/Button/Button';
-// import { Input } from '../components/Input/Input';
-// import { OTPBox } from '../components/Verification_input/Verification_input';
-import { HeaderPref } from '../components/HeaderPref/HeaderPref';
-import { ModalButton } from '../components/ModalButton/ModalButton';
-// import { ActivityItem } from '../components/ActivityItem/ActivityItem';
+import React from 'react';
+import { BrowserRouter as Router, Switch } from 'react-router-dom';
 
-export function App() {
-  const [bgcolor, setBgcolor] = useState('black');
-  const [bottext, setBottext] = useState('Edit Personal Preference');
-  const [show, setShow] = useState(false);
-  function clickme() {
-    if (bgcolor !== 'green') {
-      setBgcolor('green');
-    } else {
-      setBgcolor('black');
-    }
-    if (bottext !== 'Done') {
-      setBottext('Done');
-    } else {
-      setBottext('Edit Personal Preference');
-    }
-    if (show !== true) {
-      setShow(true);
-    } else {
-      setShow(false);
-    }
-  }
+import { AuthProvider } from '../services/auth_service/auth_service';
+import { GroupProvider } from '../services/group_service/group_service';
+import { UserPage } from '../components/user_page/user_page';
+import { GroupPage } from '../components/group_page/group_page';
+import { WelcomePage } from '../components/welcome_page/welcome_page';
+import { AppRoute } from '../components/app_route/app_route';
+
+import './App.css';
 
   return (
-    <div className="App">
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-      </header> */}
-      {/* <Header />
-      <div className="div1">
-        <b>Phone Number</b>
-        <Input />
-        <Button text="Send verification code" />
-      </div>
-      <div>
-        <OTPBox />
-      </div> */}
-      <div>
-        <HeaderPref></HeaderPref>
-        <div className="activity-list"></div>
-        {show && <ModalButton buttonLabel="+"></ModalButton>}
-        <div className="bottom_button">
-          <button
-            style={{ backgroundColor: bgcolor }}
-            className="bottomButton"
-            onClick={() => clickme()}
-          >
-            {bottext}
-          </button>
-        </div>
-      </div>
-    </div>
+    <GroupProvider>
+      <AuthProvider>
+        <Router>
+          <div className="App">
+            <Switch>
+              <AppRoute exact path="/">
+                <WelcomePage />
+              </AppRoute>
+              <AppRoute path="/user">
+                <UserPage />
+              </AppRoute>
+              <AppRoute path="/group">
+                <GroupPage />
+              </AppRoute>
+            </Switch>
+          </div>
+        </Router>
+      </AuthProvider>
+    </GroupProvider>
   );
 }
 
