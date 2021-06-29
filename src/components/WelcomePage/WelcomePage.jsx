@@ -44,11 +44,19 @@ export function WelcomePage() {
   let submitSection = undefined;
   if (submissionState === SUBMISSION_STATE.LOG_IN) {
     submitSection = (
-      <CodeInput codeLength={4} onSubmit={(val) => signIn(val)} />
+      <CodeInput
+        codeLength={6}
+        submitText={'Log in'}
+        onSubmit={(val) => signIn(val)}
+      />
     );
   } else if (submissionState === SUBMISSION_STATE.SIGN_UP) {
     submitSection = (
-      <CodeInput codeLength={4} onSubmit={(val) => signUp(val)} />
+      <CodeInput
+        codeLength={6}
+        submitText={'Sign up'}
+        onSubmit={(val) => signUp(val)}
+      />
     );
   }
 

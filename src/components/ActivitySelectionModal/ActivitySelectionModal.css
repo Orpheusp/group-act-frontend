@@ -1,13 +1,9 @@
-.activity-selection-modal {
-  width: 100%;
-}
-
 .activity-selection-modal .modal-content {
   background-color: var(--color-white);
 }
 
 .activity-selection-modal--header h5 {
-  font-size: 2rem;
+  font-size: 1.75rem;
   color: var(--color-black);
   font-weight: bold;
   text-align: center;
@@ -21,8 +17,8 @@
 
 .activity-selection-modal--activity-option {
   cursor: pointer;
-  padding: 0.5rem;
-  font-size: 1.5rem;
+  padding: 0.25rem;
+  font-size: 1.25rem;
   color: var(--color-grey);
   transition: all linear 0.1s;
   text-align: center;

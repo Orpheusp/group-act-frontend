@@ -15,9 +15,21 @@ export default {
 };
 
 export const codeInputFour = () => {
-  return <CodeInput codeLength={4} onSubmit={(value) => console.log(value)} />;
+  return (
+    <CodeInput
+      codeLength={4}
+      submitText={'Submit'}
+      onSubmit={(value) => console.log(value)}
+    />
+  );
 };
 
 export const codeInputSix = () => {
-  return <CodeInput codeLength={6} onSubmit={(value) => console.log(value)} />;
+  return (
+    <CodeInput
+      codeLength={6}
+      submitText={'Submit'}
+      onSubmit={(value) => console.log(value)}
+    />
+  );
 };

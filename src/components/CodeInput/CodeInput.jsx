@@ -4,7 +4,7 @@ import { Button, BUTTON_STYLE } from '../Button/Button';
 
 import './CodeInput.css';
 
-export function CodeInput({ codeLength, onSubmit }) {
+export function CodeInput({ codeLength, onSubmit, submitText }) {
   const [code, setCode] = useState(new Array(codeLength).fill(''));
   const handleChange = (element, index) => {
     setCode(code.map((val, i) => (i === index ? element.value : val)));
@@ -18,7 +18,7 @@ export function CodeInput({ codeLength, onSubmit }) {
   const codeOutput = code.join('');
 
   return (
-    <div className="code-input row">
+    <div className="code-input">
       <div className="code-input--code-fields">
         {code.map((data, index) => {
           return (
@@ -42,7 +42,7 @@ export function CodeInput({ codeLength, onSubmit }) {
         onClick={(e) => setCode([...code.map((v) => '')])}
       />
       <Button
-        text={'Submit'}
+        text={submitText}
         buttonStyle={BUTTON_STYLE.GREEN}
         disabled={!codeOutput || codeOutput.length !== codeLength}
         onClick={(e) => onSubmit(codeOutput)}

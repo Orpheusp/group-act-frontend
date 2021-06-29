@@ -19,6 +19,7 @@ export function ActivitySelectionModal({
       centered={true}
       scrollable={true}
       className={'activity-selection-modal'}
+      size={'sm'}
     >
       <ModalHeader
         toggle={toggle}
