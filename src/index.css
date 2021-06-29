@@ -10,7 +10,11 @@ body {
   --color-black: #202020ff;
   --color-black-faded: #202020cc;
   --color-grey: #979797ff;
+  --color-grey-faded: #979797cc;
+  --color-light-grey: #eeeeeeff;
+  --color-light-grey-faded: #eeeeeecc;
   --color-white: #ffffffff;
+  --color-red: #ffc7c7ff;
 }
 
 code {
