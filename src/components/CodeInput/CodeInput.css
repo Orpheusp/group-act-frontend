@@ -1,6 +1,5 @@
 .code-input {
   width: 100%;
-  margin-top: 2.5rem;
 }
 
 .code-input--label {
@@ -22,7 +21,7 @@
 .code-input--code-field {
   box-sizing: border-box;
   width: 3rem;
-  margin: 0.25rem;
+  margin: 0 0.25rem;
   height: 3rem;
   border-radius: 50%;
   font-size: 1.5rem;
