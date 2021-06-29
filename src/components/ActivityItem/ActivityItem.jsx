@@ -1,9 +1,10 @@
 import React from 'react';
-import './ActivityForm.css';
-// import ActivityForm from './ActivityForm';
+
 import { AiFillCaretUp } from 'react-icons/ai';
 import { AiFillCaretDown } from 'react-icons/ai';
 import { AiFillDelete } from 'react-icons/ai';
+
+import './ActivityItem.css';
 
 const ActivityItem = ({ acts, completeTodo, removeAct, updateTodo }) => {
   // const [edit, setEdit] = useState({
