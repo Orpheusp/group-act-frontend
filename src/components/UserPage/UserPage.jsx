@@ -44,6 +44,8 @@ export function UserPage() {
     if (arrayEqual(auth.user.preferences, newPreferences)) {
       return;
     }
+    await auth.updatePreferences(newPreferences);
+    console.log('user preferences updated');
   };
 
   const closeModal = () => {
