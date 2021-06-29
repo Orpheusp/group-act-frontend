@@ -16,10 +16,18 @@ export default {
 
 export const activityListReadonly = () => {
   return (
+    <ActivityList readonly={true} activityPreferences={[2, 15, 6, 7, 9, 21]} />
+  );
+};
+
+export const activityList = () => {
+  return (
     <ActivityList
-      readonly={true}
+      readonly={false}
       activityPreferences={[2, 15, 6, 7, 9, 21]}
-      onChange={() => {}}
+      onPreferencesChange={(preferences) => {
+        console.log(preferences);
+      }}
     />
   );
 };
