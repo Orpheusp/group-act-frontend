@@ -15,8 +15,13 @@ const SUBMISSION_STATE = Object.freeze({
   SIGN_UP: 2,
 });
 
+const OTP_LENGTH = 6;
+
 export function WelcomePage() {
-  const [phoneNumber, setPhoneNumber] = useState('');
+  const [credential, setCredential] = useState({
+    phoneNumber: '',
+    otp: new Array(OTP_LENGTH).fill(''),
+  });
   const [submissionState, setSubmissionState] = useState(
     SUBMISSION_STATE.HIDDEN
   );
@@ -25,48 +30,32 @@ export function WelcomePage() {
   const history = useHistory();
 
   const getOtp = async () => {
-    const accountExists = await auth.getOtp(phoneNumber);
+    const accountExists = await auth.getOtp(credential.phoneNumber);
     setSubmissionState(
       accountExists ? SUBMISSION_STATE.LOG_IN : SUBMISSION_STATE.SIGN_UP
     );
   };
 
-  const signIn = async (otp) => {
-    await auth.signIn(phoneNumber, otp);
-    history.replace('/user');
-  };
-
-  const signUp = async (otp) => {
-    await auth.signUp(phoneNumber, otp);
-    history.replace('/user');
-  };
-
-  let submitSection = undefined;
-  if (submissionState === SUBMISSION_STATE.LOG_IN) {
-    submitSection = (
-      <CodeInput
-        codeLength={6}
-        submitText={'Log in'}
-        onSubmit={(val) => signIn(val)}
-      />
-    );
-  } else if (submissionState === SUBMISSION_STATE.SIGN_UP) {
-    submitSection = (
-      <CodeInput
-        codeLength={6}
-        submitText={'Sign up'}
-        onSubmit={(val) => signUp(val)}
-      />
-    );
-  }
+  const submitSection = getSubmitSection(
+    submissionState,
+    credential,
+    setCredential,
+    auth,
+    history
+  );
 
   return (
     <div className={'welcome-page'}>
       <Header text={'group act'} />
       <Input
         id="phone-number"
-        value={phoneNumber}
-        onChange={(e) => setPhoneNumber(e.target.value)}
+        value={credential.phoneNumber}
+        onChange={(e) =>
+          setCredential({
+            ...credential,
+            phoneNumber: e.target.value,
+          })
+        }
         label={'Phone Number'}
       />
       <Button
@@ -77,4 +66,85 @@ export function WelcomePage() {
       {submitSection}
     </div>
   );
+}
+
+function getSubmitSection(
+  submissionState,
+  credential,
+  setCredential,
+  auth,
+  history
+) {
+  const otpOutput = credential.otp.join('');
+
+  const signIn = async () => {
+    await auth.signIn(credential.phoneNumber, otpOutput);
+    history.replace('/user');
+  };
+
+  const signUp = async () => {
+    await auth.signUp(credential.phoneNumber, otpOutput);
+    history.replace('/user');
+  };
+
+  const updateOtp = (i, val) => {
+    const newOtp = [...credential.otp];
+    newOtp[i] = val;
+    setCredential({
+      ...credential,
+      otp: newOtp,
+    });
+  };
+
+  const resetOtp = () => {
+    setCredential({
+      ...credential,
+      otp: new Array(OTP_LENGTH).fill(''),
+    });
+  };
+
+  const clearButton = (
+    <Button
+      text={'Clear'}
+      buttonStyle={BUTTON_STYLE.HOLLOW}
+      disabled={!otpOutput}
+      onClick={resetOtp}
+    />
+  );
+
+  const otpInput = (
+    <CodeInput
+      code={credential.otp}
+      label={'Verification Code'}
+      onChange={updateOtp}
+    />
+  );
+
+  if (submissionState === SUBMISSION_STATE.LOG_IN) {
+    return (
+      <React.Fragment>
+        {otpInput}
+        {clearButton}
+        <Button
+          text={'Log in'}
+          buttonStyle={BUTTON_STYLE.GREEN}
+          disabled={!otpOutput || otpOutput.length !== OTP_LENGTH}
+          onClick={signIn}
+        />
+      </React.Fragment>
+    );
+  } else if (submissionState === SUBMISSION_STATE.SIGN_UP) {
+    return (
+      <React.Fragment>
+        {otpInput}
+        {clearButton}
+        <Button
+          text={'Sign up'}
+          buttonStyle={BUTTON_STYLE.GREEN}
+          disabled={!otpOutput || otpOutput.length !== OTP_LENGTH}
+          onClick={signUp}
+        />
+      </React.Fragment>
+    );
+  }
 }
