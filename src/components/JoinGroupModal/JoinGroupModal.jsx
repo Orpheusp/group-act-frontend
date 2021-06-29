@@ -29,13 +29,13 @@ export function JoinGroupModal({ isOpen, toggle, onSubmit }) {
   const reset = () => {
     setGroupInfo({
       password: '',
-      otp: new Array(INVITE_CODE_LENGTH).fill(''),
+      inviteCode: new Array(INVITE_CODE_LENGTH).fill(''),
     });
   };
 
   const passwordInput = (
     <Input
-      label={'Group Password'}
+      label={'Group Password (Optional)'}
       type={'password'}
       value={groupInfo.password}
       onChange={(e) =>
@@ -72,7 +72,10 @@ export function JoinGroupModal({ isOpen, toggle, onSubmit }) {
         !inviteCodeOutput || inviteCodeOutput.length !== INVITE_CODE_LENGTH
       }
       onClick={() => {
-        onSubmit(groupInfo.password, inviteCodeOutput);
+        onSubmit({
+          password: groupInfo.password,
+          inviteCode: inviteCodeOutput,
+        });
       }}
     />
   );
@@ -90,8 +93,8 @@ export function JoinGroupModal({ isOpen, toggle, onSubmit }) {
         Join A Group
       </ModalHeader>
       <ModalBody className={'join-group-modal--body'}>
-        {passwordInput}
         {inviteCodeInput}
+        {passwordInput}
         {clearButton}
         {submitButton}
       </ModalBody>

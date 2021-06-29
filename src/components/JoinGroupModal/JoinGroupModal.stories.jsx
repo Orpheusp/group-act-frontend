@@ -21,7 +21,7 @@ export const joinGroupModalOpen = () => {
       toggle={() => {
         console.log('toggle');
       }}
-      onSubmit={(password, inviteCode) => console.log(password, inviteCode)}
+      onSubmit={(value) => console.log(value)}
     />
   );
 };
@@ -33,7 +33,7 @@ export const joinGroupModalClosed = () => {
       toggle={() => {
         console.log('toggle');
       }}
-      onSubmit={(password, inviteCode) => console.log(password, inviteCode)}
+      onSubmit={(value) => console.log(value)}
     />
   );
 };
