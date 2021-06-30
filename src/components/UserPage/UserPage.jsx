@@ -71,7 +71,7 @@ export function UserPage() {
 
   return (
     <div className={'user-page'}>
-      <SubHeader text={`user: ${auth.user.displayName}`} />
+      <SubHeader text={`USER NAME: ${auth.user.displayName}`} />
       <Header text={'personal preference'} />
       <Button
         onClick={openJoinGroupModal}

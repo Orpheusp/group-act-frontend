@@ -25,8 +25,8 @@ export function GroupPage() {
   return (
     <div className={'group-page'}>
       <Header text={'group priority list'} />
-      <SubHeader text={`group size: ${groupSize}`} />
-      <SubHeader text={`invite code: ${inviteCode}`} />
+      <SubHeader text={`GROUP SIZE: ${groupSize}`} />
+      <SubHeader text={`INVITE CODE: ${inviteCode}`} />
       <ActivityList
         readonly={true}
         activityPreferences={getActivities(group.group?.preferences || [])}
