@@ -76,7 +76,7 @@ export async function sendUserPreferencesUpdateRequest(userId, preferences) {
   headers.append('Content-Type', 'application/json');
 
   const url = new URL(
-    `${USERS_ENDPOINT_URL}/${userId}`,
+    `${USERS_ENDPOINT_URL}/${userId}/preferences`,
     window.location.origin
   );
   const body = JSON.stringify({ preferences });
