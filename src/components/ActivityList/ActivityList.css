@@ -1,0 +1,12 @@
+.activity-list {
+  position: relative;
+}
+
+.activity-list--edit-button-container {
+  background-color: var(--color-white);
+  position: sticky;
+  left: 0;
+  bottom: 0;
+  padding: 0.3rem 0;
+  width: 100%;
+}

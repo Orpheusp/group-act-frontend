@@ -1,0 +1,8 @@
+.sub-header {
+  box-sizing: border-box;
+  font-size: 1.125rem;
+  font-weight: bold;
+  margin: 0.125rem 0;
+  color: var(--color-black);
+  text-align: left;
+}

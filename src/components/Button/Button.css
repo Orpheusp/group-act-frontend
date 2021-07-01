@@ -1,0 +1,53 @@
+.button {
+  box-sizing: border-box;
+  border: none;
+  border-radius: 1.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  height: 3rem;
+  margin: 0.5rem 0;
+  transition: all linear 0.1s;
+  width: 100%;
+}
+
+.button:disabled,
+.button:disabled:hover,
+.button:disabled:focus {
+  color: var(--color-white);
+  background-color: var(--color-grey);
+  border: none;
+  cursor: default;
+}
+
+.button__green {
+  color: var(--color-white);
+  background-color: var(--color-green-faded);
+}
+
+.button__green:hover,
+.button__green:focus {
+  background-color: var(--color-green);
+}
+
+.button__black {
+  color: var(--color-white);
+  background-color: var(--color-black-faded);
+}
+
+.button__black:hover,
+.button__black:focus {
+  background-color: var(--color-black);
+}
+
+.button__hollow {
+  background-color: var(--color-white);
+  border: 0.15rem solid var(--color-black);
+  color: var(--color-black);
+}
+
+.button__hollow:hover,
+.button__hollow:focus {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}

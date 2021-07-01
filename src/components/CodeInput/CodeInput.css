@@ -1,0 +1,41 @@
+.code-input {
+  width: 100%;
+}
+
+.code-input--label {
+  box-sizing: border-box;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: bold;
+  line-height: 1rem;
+  text-align: center;
+  color: var(--color-black);
+}
+
+.code-input--code-fields {
+  width: 100%;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.code-input--code-field {
+  box-sizing: border-box;
+  width: 3rem;
+  margin: 0 0.25rem;
+  height: 3rem;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font-weight: normal;
+  text-align: center;
+  border: 0.15rem solid var(--color-grey);
+  transition: all linear 0.1s;
+}
+
+.code-input--code-field:hover,
+.code-input--code-field:focus,
+.code-input--code-field:active,
+.code-input--code-field:not(:placeholder-shown) {
+  border: 0.15rem solid var(--color-black);
+  outline: none;
+}

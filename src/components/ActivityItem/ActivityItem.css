@@ -1,0 +1,95 @@
+.activity-item {
+  cursor: pointer;
+  box-sizing: border-box;
+  width: 100%;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  border: 0.125rem solid var(--color-black);
+  overflow: hidden;
+  position: relative;
+  margin: 0.5rem 0;
+}
+
+.activity-item__viewing {
+  cursor: default;
+}
+
+.activity-item--index,
+.activity-item--label,
+.activity-item--actions {
+  box-sizing: border-box;
+  display: inline-block;
+  position: absolute;
+}
+
+.activity-item--label {
+  box-sizing: border-box;
+  top: 0;
+  left: 2.5rem;
+  padding-left: 0.5rem;
+  font-size: 1.25rem;
+  line-height: 2.25rem;
+  transition: all linear 0.1s;
+  width: calc(100% - 2.5rem - 2rem * 3);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.activity-item__viewing .activity-item--label {
+  width: calc(100% - 2.5rem);
+  transition: none;
+  background-color: var(--color-white);
+}
+
+.activity-item__viewing .activity-item--index:focus ~ .activity-item--label,
+.activity-item__viewing .activity-item--index:active ~ .activity-item--label,
+.activity-item__viewing .activity-item--index:hover ~ .activity-item--label,
+.activity-item__viewing .activity-item--label:focus,
+.activity-item__viewing .activity-item--label:active,
+.activity-item__viewing .activity-item--label:hover {
+  background-color: var(--color-white);
+}
+
+.activity-item--index:focus ~ .activity-item--label,
+.activity-item--index:active ~ .activity-item--label,
+.activity-item--index:hover ~ .activity-item--label,
+.activity-item--label:focus,
+.activity-item--label:active,
+.activity-item--label:hover {
+  background-color: var(--color-light-grey-faded);
+}
+
+.activity-item--actions {
+  box-sizing: border-box;
+  top: 0;
+  right: 0;
+}
+
+.activity-item--index {
+  width: 2.5rem;
+  height: 100%;
+  line-height: 2.25rem;
+  background-color: var(--color-red);
+  border-right: 0.125rem solid var(--color-black);
+  top: 0;
+  left: 0;
+  text-align: center;
+  font-size: 1.25rem;
+}
+
+.activity-item--action {
+  box-sizing: border-box;
+  border-left: 0.125rem solid var(--color-black);
+  background-color: var(--color-white);
+  height: 2.5rem;
+  width: 2rem;
+  padding: 0.375rem;
+  transition: all linear 0.1s;
+}
+
+.activity-item--action:hover,
+.activity-item--action:focus,
+.activity-item--action:active {
+  background-color: var(--color-light-grey-faded);
+}

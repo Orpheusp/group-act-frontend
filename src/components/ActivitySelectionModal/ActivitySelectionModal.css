@@ -1,0 +1,32 @@
+.activity-selection-modal .modal-content {
+  background-color: var(--color-white);
+}
+
+.activity-selection-modal--header h5 {
+  font-size: 1.75rem;
+  color: var(--color-black);
+  font-weight: bold;
+  text-align: center;
+}
+
+.activity-selection-modal--body {
+  max-height: 40rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.activity-selection-modal--activity-option {
+  cursor: pointer;
+  padding: 0.25rem;
+  font-size: 1.25rem;
+  color: var(--color-grey);
+  transition: all linear 0.1s;
+  text-align: center;
+}
+
+.activity-selection-modal--activity-option:hover,
+.activity-selection-modal--activity-option:focus,
+.activity-selection-modal--activity-option:active {
+  color: var(--color-black);
+  font-weight: bold;
+}
